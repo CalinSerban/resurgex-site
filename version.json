@@ -1,5 +1,5 @@
 {
-  "version": "1.1.0",
-  "url": "https://github.com/calinserban/resurgex-site/releases/download/v1.1.0/ResurgexSetup-1.1.0.exe",
-  "notes": "Improved MP4, AVI and WAV file size detection; fixed file detection near bad sectors"
+  "version": "1.1.1",
+  "url": "https://github.com/calinserban/resurgex-site/releases/download/v1.1.1/ResurgexSetup-1.1.1.exe",
+  "notes": "Test version change"
 }

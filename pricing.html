@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Pricing — Resurgex</title>
+<style>
+:root{
+  --bg:#07090E;--surface:#0D1521;--card:#111E2E;--border:#1A2B3D;
+  --text:#D8E8F5;--muted:#5E7890;--accent:#1A9BEE;--aclo:rgba(26,155,238,.12);
+  --green:#20D47A;--orange:#FF7A45;
+  --sans:'Segoe UI',-apple-system,system-ui,sans-serif;
+  --mono:'Cascadia Code','Consolas','Courier New',monospace;--r:8px;
+}
+@media(prefers-color-scheme:light){:root{
+  --bg:#EDF2F8;--surface:#FFFFFF;--card:#FFFFFF;--border:#C5D5E5;
+  --text:#0A1828;--muted:#5070A0;--accent:#0B80D0;--aclo:rgba(11,128,208,.1);
+  --green:#0EA860;--orange:#D45A20;
+}}
+:root[data-theme="light"]{--bg:#EDF2F8;--surface:#FFFFFF;--card:#FFFFFF;--border:#C5D5E5;--text:#0A1828;--muted:#5070A0;--accent:#0B80D0;--aclo:rgba(11,128,208,.1);--green:#0EA860;--orange:#D45A20;}
+:root[data-theme="dark"]{--bg:#07090E;--surface:#0D1521;--card:#111E2E;--border:#1A2B3D;--text:#D8E8F5;--muted:#5E7890;--accent:#1A9BEE;--aclo:rgba(26,155,238,.12);--green:#20D47A;--orange:#FF7A45;}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);background:var(--bg);color:var(--text);line-height:1.6;font-size:15px;-webkit-font-smoothing:antialiased}
+a{color:var(--accent);text-decoration:none}
+a:hover{text-decoration:underline}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:10px 22px;border-radius:var(--r);font-family:var(--sans);font-size:14px;font-weight:600;cursor:pointer;border:1.5px solid transparent;transition:opacity .15s,border-color .15s,color .15s;white-space:nowrap;text-decoration:none!important}
+.btn-accent{background:var(--accent);color:#fff;border-color:var(--accent)}
+.btn-accent:hover{opacity:.85}
+.btn-ghost{background:transparent;color:var(--text);border-color:var(--border)}
+.btn-ghost:hover{border-color:var(--accent);color:var(--accent)}
+.btn-lg{padding:14px 30px;font-size:15px}
+.btn-full{width:100%;display:flex}
+.nav{position:sticky;top:0;z-index:100;background:var(--bg);border-bottom:1px solid var(--border)}
+.nav-in{max-width:1120px;margin:0 auto;padding:0 24px;height:60px;display:flex;align-items:center;justify-content:space-between}
+.logo{display:flex;align-items:center;gap:10px;font-weight:700;font-size:17px;color:var(--text);text-decoration:none!important}
+.logo-mark{width:30px;height:30px;background:var(--accent);border-radius:7px;display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:11px;font-weight:700;color:#fff}
+.nav-btns{display:flex;gap:10px}
+.footer{border-top:1px solid var(--border);padding:32px 0}
+.footer-in{max-width:1120px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px}
+/* page layout */
+.page{padding:72px 24px 96px;max-width:1120px;margin:0 auto}
+.page-header{text-align:center;margin-bottom:56px}
+.eyebrow{font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:.14em;color:var(--accent);margin-bottom:16px}
+.page-header h1{font-size:clamp(28px,4vw,42px);font-weight:700;letter-spacing:-.025em;margin-bottom:14px}
+.page-header p{font-size:16px;color:var(--muted);max-width:480px;margin:0 auto}
+/* pricing card */
+.price-wrap{max-width:460px;margin:0 auto 72px}
+.price-card{background:var(--card);border:1px solid var(--border);border-radius:12px;overflow:hidden}
+.price-head{padding:36px 36px 28px;border-bottom:1px solid var(--border);text-align:center}
+.price-tier{font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:.12em;color:var(--muted);margin-bottom:20px}
+.price-num{font-size:56px;font-weight:800;letter-spacing:-.035em;line-height:1;margin-bottom:10px}
+.price-num sup{font-size:24px;font-weight:700;vertical-align:top;margin-top:10px;display:inline-block}
+.price-once{font-size:14px;color:var(--green);font-weight:600}
+.price-list{list-style:none;padding:28px 36px;display:flex;flex-direction:column;gap:13px}
+.price-list li{display:flex;align-items:flex-start;gap:12px;font-size:14px}
+.price-list li::before{content:'✓';color:var(--green);font-weight:700;flex-shrink:0;margin-top:1px}
+.price-btns{padding:0 36px 36px;display:flex;flex-direction:column;gap:10px}
+/* guarantee badge */
+.guarantee-row{display:flex;align-items:center;justify-content:center;gap:10px;
+  font-size:13px;color:var(--muted);padding:0 36px 28px;margin-top:-8px}
+.guarantee-row span{color:var(--green);font-weight:600}
+/* FAQ */
+.faq{max-width:680px;margin:0 auto}
+.faq-title{font-size:24px;font-weight:700;letter-spacing:-.02em;text-align:center;margin-bottom:36px}
+.faq-item{border-bottom:1px solid var(--border);padding:20px 0}
+.faq-item:last-child{border-bottom:none}
+.faq-q{font-size:15px;font-weight:700;margin-bottom:8px}
+.faq-a{font-size:14px;color:var(--muted);line-height:1.75}
+</style>
+</head>
+<body>
+<nav class="nav">
+  <div class="nav-in">
+    <a href="index.html" class="logo">
+      <div class="logo-mark">Rx</div>
+      Resurgex
+    </a>
+    <div class="nav-btns">
+      <button class="btn btn-ghost" id="theme-btn" style="padding:8px 14px">☀</button>
+      <a href="pricing.html" class="btn btn-accent">Buy — $24.95</a>
+    </div>
+  </div>
+</nav>
+
+<main class="page">
+  <div class="page-header">
+    <div class="eyebrow">Pricing</div>
+    <h1>One price. Everything included.</h1>
+    <p>No subscriptions, no feature tiers, no upsells. Pay once and recover your files.</p>
+  </div>
+
+  <div class="price-wrap">
+    <div class="price-card">
+      <div class="price-head">
+        <div class="price-tier">Lifetime License</div>
+        <div class="price-num"><sup>$</sup>24.95</div>
+        <div class="price-once">One-time payment — yours forever</div>
+      </div>
+      <ul class="price-list">
+        <li>FAT32, exFAT &amp; NTFS file systems</li>
+        <li>Raw file carving (JPEG, PNG, MP4, PDF, DOCX &amp; more)</li>
+        <li>Deep scan mode for formatted or corrupted drives</li>
+        <li>File preview before recovery</li>
+        <li>Disk imaging to ISO/IMG</li>
+        <li>Filter by file type, name, or recovery chance</li>
+        <li>Windows 10 &amp; 11 (64-bit)</li>
+        <li>Free updates for the current major version</li>
+      </ul>
+      <div class="price-btns">
+        <a href="https://resurgexapp.com" class="btn btn-accent btn-lg btn-full">
+          Buy Now — $24.95
+        </a>
+        <a href="index.html#download" class="btn btn-ghost btn-full">
+          Download Free Trial
+        </a>
+      </div>
+      <div class="guarantee-row">
+        <span>30-day money-back guarantee</span>
+        &mdash; no questions asked.
+        <a href="refund.html">Details</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="faq">
+    <div class="faq-title">Frequently Asked Questions</div>
+
+    <div class="faq-item">
+      <div class="faq-q">Is this a one-time purchase?</div>
+      <div class="faq-a">Yes. You pay $24.95 once and the license is yours. There are no monthly fees, no renewals, and no subscription.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">What does the free trial include?</div>
+      <div class="faq-a">The trial lets you scan any drive and see exactly which files can be recovered, including file names, sizes, and a preview. Recovery requires a license.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">How many computers can I install it on?</div>
+      <div class="faq-a">One license covers one computer. If you need to transfer the license to a new machine, contact support.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">Do I get future updates?</div>
+      <div class="faq-a">All minor and patch updates (1.x.x) are free. If a major new version is released, it may require a separate purchase — but existing licenses will always continue to work on the version you purchased.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">What payment methods are accepted?</div>
+      <div class="faq-a">Payments are processed by Paddle and include all major credit and debit cards as well as PayPal.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">What if it doesn't work for my drive?</div>
+      <div class="faq-a">Email <a href="mailto:support@resurgexapp.com">support@resurgexapp.com</a> — we'll help troubleshoot first. If we can't solve the issue, you're covered by the 30-day money-back guarantee.</div>
+    </div>
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="footer-in">
+    <span style="color:var(--muted);font-size:13px">© 2025 Calin Serban. All rights reserved.</span>
+    <div style="display:flex;gap:20px;font-size:13px">
+      <a href="terms.html">Terms</a>
+      <a href="privacy.html">Privacy</a>
+      <a href="refund.html">Refunds</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+const btn = document.getElementById('theme-btn');
+const root = document.documentElement;
+const stored = localStorage.getItem('theme');
+if (stored) { root.dataset.theme = stored; }
+btn.textContent = root.dataset.theme === 'light' ? '☾' : '☀';
+btn.addEventListener('click', () => {
+  const t = root.dataset.theme === 'light' ? 'dark' : 'light';
+  root.dataset.theme = t;
+  localStorage.setItem('theme', t);
+  btn.textContent = t === 'light' ? '☾' : '☀';
+});
+</script>
+</body>
+</html>

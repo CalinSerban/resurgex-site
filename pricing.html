@@ -108,9 +108,9 @@ a:hover{text-decoration:underline}
         <li>Free updates for the current major version</li>
       </ul>
       <div class="price-btns">
-        <a href="https://resurgexapp.com" class="btn btn-accent btn-lg btn-full">
+        <button onclick="buyNow()" class="btn btn-accent btn-lg btn-full">
           Buy Now — $24.95
-        </a>
+        </button>
         <a href="index.html#download" class="btn btn-ghost btn-full">
           Download Free Trial
         </a>
@@ -169,7 +169,21 @@ a:hover{text-decoration:underline}
   </div>
 </footer>
 
+<script src="https://cdn.paddle.com/paddle/v2/paddle.js"></script>
 <script>
+Paddle.Initialize({ token: 'live_86cd162fd670e04ec4d2a22bdd8' });
+
+function buyNow() {
+  Paddle.Checkout.open({
+    items: [{ priceId: 'pri_01ky72jj3rb6ccbntzb3ts96np', quantity: 1 }],
+    currencyCode: 'USD',
+    settings: {
+      displayMode: 'overlay',
+      variant: 'one-page'
+    }
+  });
+}
+
 const btn = document.getElementById('theme-btn');
 const root = document.documentElement;
 const stored = localStorage.getItem('theme');

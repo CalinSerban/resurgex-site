@@ -336,11 +336,12 @@ a:hover{text-decoration:underline}
 
 <script src="https://cdn.paddle.com/paddle/v2/paddle.js"></script>
 <script>
-Paddle.Initialize({ token: 'live_86cd162fd670e04ec4d2a22bdd8' });
+Paddle.Environment.set('sandbox');
+Paddle.Initialize({ token: 'test_5959a23d6ef09d52448d2c9a2dc' });
 
 function buyNow() {
   Paddle.Checkout.open({
-    items: [{ priceId: 'pri_01ky72jj3rb6ccbntzb3ts96np', quantity: 1 }],
+    items: [{ priceId: 'pri_01ky9eyvv121h6fqd3xnenw5dc', quantity: 1 }],
     currencyCode: 'USD',
     settings: {
       displayMode: 'overlay',
